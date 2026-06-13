@@ -6,6 +6,8 @@ public class MouseController : MonoBehaviour
 {
     public float jetpackForce = 75.0f;
 
+    public float forwardMovementSpeed = 3.0f;
+
 
     public float colliderRadius = 0.5f;
 
@@ -41,6 +43,12 @@ public class MouseController : MonoBehaviour
         {
             playerRigidbody.AddForce(new Vector2(0, jetpackForce));
         }
+
+        // Keep the mouse moving forward. Only the x-component is changed so the
+        // jetpack force keeps full control over vertical (y) movement.
+        Vector2 newVelocity = playerRigidbody.velocity;
+        newVelocity.x = forwardMovementSpeed;
+        playerRigidbody.velocity = newVelocity;
 
         UpdateAnimation(jetpackActive);
     }
