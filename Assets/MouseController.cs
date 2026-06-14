@@ -27,8 +27,11 @@ public class MouseController : MonoBehaviour
     private Rigidbody2D playerRigidbody;
     private Animator animator;
 
-    private bool wasGrounded;    
-    private float landedTimer;   
+    private bool wasGrounded;
+    private float landedTimer;
+
+    // Number of coins the player has collected this run.
+    public int coins;
 
     void Start()
     {
@@ -108,6 +111,17 @@ public class MouseController : MonoBehaviour
         animator.SetInteger("state", state);
     }
 
+
+    // The player's collider is solid; coins use trigger colliders, so picking one
+    // up arrives here. Detection is by component so no project tag is required.
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        Coin coin = other.GetComponent<Coin>();
+        if (coin != null)
+        {
+            coins += coin.Collect();
+        }
+    }
 
     float DistanceToGround()
     {

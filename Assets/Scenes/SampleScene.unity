@@ -749,6 +749,11 @@ MonoBehaviour:
   - {fileID: 3000000, guid: e1f2a3b4c5d6e7f8091a2b3c4d5e6f70, type: 3}
   currentRooms:
   - {fileID: 1500000001}
+  coinPrefab: {fileID: 5000000, guid: c0111111111111111111111111111105, type: 3}
+  coinSpawnChance: 0.85
+  coinSpacing: 0.7
+  coinMinY: -1
+  coinMaxY: 1.5
 --- !u!1 &2048802111
 GameObject:
   m_ObjectHideFlags: 0
